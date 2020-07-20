@@ -1,16 +1,6 @@
-# TypeScript Node Starter
+# APP Distribute Server
 
-The main purpose of this repository is to show a working Node.js API Server + front-end project and workflow for writing Node code in TypeScript.
-
-It is not a goal to be a comprehensive and definitive guide to making a TypeScript and Node project, but as a working reference maintained by the community. If you are interested in starting a new TypeScript project - check out the bootstrapping tools reference in [the TypeScript Website](https://www.typescriptlang.org/docs/home.html)
-
-
-[![Dependency Status](https://david-dm.org/Microsoft/TypeScript-Node-Starter.svg)](https://david-dm.org/Microsoft/TypeScript-Node-Starter) [![Build Status](https://travis-ci.org/Microsoft/TypeScript-Node-Starter.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-Node-Starter)
-
-**Live Demo**: [https://typescript-node-starter.azurewebsites.net/](https://typescript-node-starter.azurewebsites.net/)
-
-![image](https://user-images.githubusercontent.com/820883/36764267-abbdb7f8-1be0-11e8-9678-2a9ea448d7f8.png)
-
+The main purpose of this repository is to show a working Node.js API Server for APP Distribute Server.
 
 # Table of contents:
 
@@ -18,7 +8,6 @@ It is not a goal to be a comprehensive and definitive guide to making a TypeScri
 - [Getting started](#getting-started)
 - [Deploying the app](#deploying-the-app)
 	- [Pre-reqs](#pre-reqs-1)
-	- [Deploying to Azure App Service](#deploying-to-azure-app-service)
 - [TypeScript + Node](#typescript--node)
 	- [Getting TypeScript](#getting-typescript)
 	- [Project Structure](#project-structure)
@@ -30,7 +19,6 @@ It is not a goal to be a comprehensive and definitive guide to making a TypeScri
 - [Dependencies](#dependencies)
 	- [`dependencies`](#dependencies-1)
 	- [`devDependencies`](#devdependencies)
-- [Hackathon Starter Project](#hackathon-starter-project)
 
 # Pre-reqs
 To build and run this app locally you will need a few things:
@@ -605,9 +593,6 @@ In that file you'll find two sections:
 | typescript                      | JavaScript compiler/type checker that boosts JavaScript productivity   |
 
 To install or update these dependencies you can use `npm install` or `npm update`.
-
-# Hackathon Starter Project
-A majority of this quick start's content was inspired or adapted from Sahat's excellent [Hackathon Starter project](https://github.com/sahat/hackathon-starter).
 
 ## License
 Copyright (c) Microsoft Corporation. All rights reserved.

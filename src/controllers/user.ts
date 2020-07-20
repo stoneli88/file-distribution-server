@@ -10,19 +10,6 @@ import { check, sanitize, validationResult } from "express-validator";
 import "../config/passport";
 
 /**
- * GET /login
- * Login page.
- */
-export const getLogin = (req: Request, res: Response) => {
-    if (req.user) {
-        return res.redirect("/");
-    }
-    res.render("account/login", {
-        title: "Login"
-    });
-};
-
-/**
  * POST /login
  * Sign in using email and password.
  */
@@ -63,19 +50,6 @@ export const logout = (req: Request, res: Response) => {
 };
 
 /**
- * GET /signup
- * Signup page.
- */
-export const getSignup = (req: Request, res: Response) => {
-    if (req.user) {
-        return res.redirect("/");
-    }
-    res.render("account/signup", {
-        title: "Create Account"
-    });
-};
-
-/**
  * POST /signup
  * Create a new local account.
  */
@@ -113,16 +87,6 @@ export const postSignup = async (req: Request, res: Response, next: NextFunction
                 res.redirect("/");
             });
         });
-    });
-};
-
-/**
- * GET /account
- * Profile page.
- */
-export const getAccount = (req: Request, res: Response) => {
-    res.render("account/profile", {
-        title: "Account Management"
     });
 };
 
@@ -206,48 +170,6 @@ export const postDeleteAccount = (req: Request, res: Response, next: NextFunctio
 };
 
 /**
- * GET /account/unlink/:provider
- * Unlink OAuth provider.
- */
-export const getOauthUnlink = (req: Request, res: Response, next: NextFunction) => {
-    const provider = req.params.provider;
-    const user = req.user as UserDocument;
-    User.findById(user.id, (err, user: any) => {
-        if (err) { return next(err); }
-        user[provider] = undefined;
-        user.tokens = user.tokens.filter((token: AuthToken) => token.kind !== provider);
-        user.save((err: WriteError) => {
-            if (err) { return next(err); }
-            req.flash("info", { msg: `${provider} account has been unlinked.` });
-            res.redirect("/account");
-        });
-    });
-};
-
-/**
- * GET /reset/:token
- * Reset Password page.
- */
-export const getReset = (req: Request, res: Response, next: NextFunction) => {
-    if (req.isAuthenticated()) {
-        return res.redirect("/");
-    }
-    User
-        .findOne({ passwordResetToken: req.params.token })
-        .where("passwordResetExpires").gt(Date.now())
-        .exec((err, user) => {
-            if (err) { return next(err); }
-            if (!user) {
-                req.flash("errors", { msg: "Password reset token is invalid or has expired." });
-                return res.redirect("/forgot");
-            }
-            res.render("account/reset", {
-                title: "Password Reset"
-            });
-        });
-};
-
-/**
  * POST /reset/:token
  * Process the reset password request.
  */
@@ -306,19 +228,6 @@ export const postReset = async (req: Request, res: Response, next: NextFunction)
     ], (err) => {
         if (err) { return next(err); }
         res.redirect("/");
-    });
-};
-
-/**
- * GET /forgot
- * Forgot Password page.
- */
-export const getForgot = (req: Request, res: Response) => {
-    if (req.isAuthenticated()) {
-        return res.redirect("/");
-    }
-    res.render("account/forgot", {
-        title: "Forgot Password"
     });
 };
 
